@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="d-flex mt-4" style="justify-content: space-between">
+    <h4>Lista de Médicos</h4>
+    <button mat-raised-button color="primary" (click)="openDoctorsForm($event)">Novo Médico</button>
+  </div>
+  <hr />
+  <app-doctors-list (openEditModal)="openDoctorsForm($event)" (openDeleteModal)="deleteDoctor($event)"></app-doctors-list>
+</div>

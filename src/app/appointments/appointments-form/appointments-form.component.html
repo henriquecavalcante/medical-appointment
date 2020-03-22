@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>{{editMode ? 'Editar' : 'Nova'}} Consulta</h1>
+<div mat-dialog-content>
+  <form [formGroup]="appointmentForm">
+    <mat-form-field [hidden]="editMode">
+      <mat-label>Médico</mat-label>
+      <mat-select formControlName="doctor">
+        <mat-option *ngFor="let doctor of doctors" [value]="doctor._id">
+          {{ doctor.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="appointmentForm.controls.doctor.hasError('required')">
+        Campo obrigatório
+      </mat-error>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Data</mat-label>
+      <input matInput [min]="minDate" [matDatepicker]="scheduleDate" formControlName="scheduleDate" readonly>
+      <mat-datepicker-toggle matSuffix [for]="scheduleDate"></mat-datepicker-toggle>
+      <mat-datepicker #scheduleDate></mat-datepicker>
+      <mat-error *ngIf="appointmentForm.controls.scheduleDate.hasError('required')">
+        Campo obrigatório
+      </mat-error>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+      <input matInput type="time" formControlName="scheduleTime" name="" min="08:00" max="18:00">
+      <mat-error *ngIf="appointmentForm.controls.scheduleTime.hasError('required')">
+        Campo obrigatório
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions class="justify-content-end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onConfirm()" [disabled]="!appointmentForm.valid">Salvar</button>
+</div>

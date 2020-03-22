@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="d-flex mt-4" style="justify-content: space-between">
+    <h4>Lista de Consultas</h4>
+    <button mat-raised-button color="primary" (click)="openAppointmentsForm($event)">Nova Consulta</button>
+  </div>
+  <hr />
+  <app-appointments-list (openEditModal)="openAppointmentsForm($event)" (openDeleteModal)="deleteAppointment($event)"></app-appointments-list>
+</div>

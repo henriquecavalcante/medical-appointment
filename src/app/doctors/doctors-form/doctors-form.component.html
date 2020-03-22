@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>{{editMode ? 'Editar' : 'Novo'}} Médico</h1>
+<div mat-dialog-content>
+  <form [formGroup]="doctorForm">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Nome"
+        formControlName="name">
+      <mat-error *ngIf="doctorForm.controls.name.hasError('required')">
+        Campo obrigatório
+      </mat-error>
+    </mat-form-field><br>
+    <mat-form-field>
+      <input matInput type="text" placeholder="E-mail"
+        formControlName="email">
+      <mat-error *ngIf="doctorForm.controls.email.hasError('required')">
+        Campo obrigatório
+      </mat-error>
+      <mat-error *ngIf="doctorForm.controls.email.hasError('email')">
+        E-mail inválido
+      </mat-error>
+    </mat-form-field><br>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Especialidade"
+        formControlName="specialty">
+      <mat-error *ngIf="doctorForm.controls.specialty.hasError('required')">
+        Campo obrigatório
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions class="justify-content-end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onConfirm()" [disabled]="!doctorForm.valid">Salvar</button>
+</div>

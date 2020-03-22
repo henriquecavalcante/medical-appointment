@@ -1,0 +1,44 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Cadastro de Usuário</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="example-form">
+      <table cellspacing="0" [formGroup]="userForm">
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="Nome Completo" formControlName="fullname" name="fullname" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="E-mail" formControlName="email" name="email" required>
+              <mat-error *ngIf="email.invalid && email.errors.email">E-mail inválido</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="Senha" formControlName="password" type="password" name="password" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="Repetir Senha" formControlName="repeatPassword" type="password" name="repeatPassword" required>
+              <mat-error *ngIf="repeatPassword.invalid && repeatPassword.errors.passwordMatch">Senhas diferentes!</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="register()" color="primary">Cadastrar</button>
+  </mat-card-actions>
+</mat-card>
